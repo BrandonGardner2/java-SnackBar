@@ -1,5 +1,7 @@
 package snackApp;
 
+import java.util.function.Function;
+
 public class Customer {
     // fields
     private static int maxId = 0;
@@ -34,20 +36,20 @@ public class Customer {
         this.cash = this.cash + cash;
     }
 
-    public void tryPurchase(double amount) {
+    public Boolean tryPurchase(double amount) {
         if (amount < this.cash) {
-            makePurchase(amount);
+            return makePurchase(amount);
         } else {
-            denyPurchase();
+            return denyPurchase();
         }
     }
 
-    public Boolean makePurchase(double amount) {
+    private Boolean makePurchase(double amount) {
         this.cash = this.cash - amount;
         return true;
     }
 
-    public Boolean denyPurchase() {
+    private Boolean denyPurchase() {
         return false;
     }
 }
